@@ -236,3 +236,14 @@ fn property_number_single_digit_right_bracket()
     assert(kvp.key == [0; 1]);
     assert(kvp.value.bytes == [0; 1]);
 }
+
+#[test]
+fn property_with_value_100()
+{
+    let (key, value) = ("a", "100");
+
+    let kvp = JSON::new("{'a' : 100}").get(key);
+
+    assert(kvp.key == key.as_bytes());
+    assert(kvp.value.bytes == value.as_bytes());
+}
